@@ -1,0 +1,12 @@
+html, #root {
+    background-color: aquamarine;
+}
+
+
+
+.apptitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
