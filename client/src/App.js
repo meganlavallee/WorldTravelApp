@@ -9,7 +9,6 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <h1 className="apptitle">World Travel App</h1>
     <Switch>
     <Route exact path="/" component={SignIn} />
     <Route exact path="/signup" component={SignUp}/>
