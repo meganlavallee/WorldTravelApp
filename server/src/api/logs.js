@@ -1,8 +1,6 @@
 const { Router } = require("express");
-
-const LogEntry = require("../models/LogEntry");
-
 const router = Router();
+const LogEntry = require("../models/LogEntry");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -19,11 +17,8 @@ router.post("/", async (req, res, next) => {
     const createdEntry = await logEntry.save();
     res.json(createdEntry);
   } catch (error) {
-    if (error.name === 'ValidationError') {
-      res.status(422);
-    }
     next(error);
   }
-})
+});
 
 module.exports = router;
