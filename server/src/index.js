@@ -11,7 +11,8 @@ const logs = require('./api/logs');
 
 const app = express();
 
-mongoose.connect(process.env.DATABASE_URL, {
+var uri = "mongodb://localhost:27017/travelapp";
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
