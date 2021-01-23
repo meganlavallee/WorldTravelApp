@@ -15,6 +15,12 @@ code {
 .marker{
   transform: translate(-50%, -100%);
 }
+.marker.red path {
+  fill: red;
+}
+.marker.blue path {
+  fill: blue;
+}
 .popup{
   max-width: 300px;
 }
