@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import entriesList from "../utils/api";
+import NewLocationForm from "../components/NewLocationForm"
 
 export default function Home() {
   const [showPopup, setPopup] = useState({});
@@ -132,7 +133,7 @@ export default function Home() {
             anchor="top"
           >
             <div className="popup">
-              <h3>Add your info here!</h3>
+              <NewLocationForm />
             </div>
           </Popup>
         </>

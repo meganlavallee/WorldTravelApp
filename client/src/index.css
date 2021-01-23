@@ -22,5 +22,15 @@ code {
   fill: blue;
 }
 .popup{
-  max-width: 300px;
+  width: 40vw;
+  padding: 1rem;
+}
+.newLocationForm label,
+.newLocationForm input,
+.newLocationForm textarea,
+.newLocationForm button {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  display: block;
+  width: 100%;
 }
