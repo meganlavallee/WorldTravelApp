@@ -1,6 +1,6 @@
-const API_URL = "http://localhost:3000";
+// const API_URL = "http://localhost:3000";
 
-export async function points() {
-    const response = await fetch (`${API_URL}/api/logs`);
+export default async function entriesList() {
+    const response = await fetch(`/api/logs`);
     return response.json();
 }
