@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactMapGL,{ Marker } from "react-map-gl";
+import ReactMapGL,{ Marker, Popup } from "react-map-gl";
 import entriesList from "../utils/api";
 
 
@@ -37,9 +37,10 @@ export default function Home() {
           key={entry._id}
           latitude={entry.latitude}
           longitude={entry.longitude}
-          offsetLeft={-20}
-          offsetTop={-10}
+          
         >
+        <div>
+
           <svg 
           className="marker" 
           style={{
@@ -54,8 +55,17 @@ export default function Home() {
           strokeLinejoin="round">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
           </svg>
+        </div>
         </Marker>
       ))}
+      <Popup
+      latitude={35.0853336}
+      longitude={-106.6055534}
+      closeButton={true}
+      closeOnClick={false}
+      onClose={() => this.setState({showPopup: false})}anchor="top">
+      <div>You are here</div>
+      </Popup>
     </ReactMapGL>
   );
 }
