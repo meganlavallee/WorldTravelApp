@@ -1,29 +1,32 @@
-import * as React from 'react';
-import { useState } from 'react';
-import ReactMapGL from 'react-map-gl';
-import {Marker} from 'react-map-gl'
-import { points } from "../utils/api";
-import { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import entriesList from "../utils/api";
 
 export default function Home() {
-  const [point, setPoint] = useState([]);
+  const [showPopup, setPopup] = useState({});
+  const [entries, setEntries] = useState([]);
   const [viewport, setViewport] = useState({
     width: "100vw",
-    height: "100vw",
+    height: "100vh",
     latitude: 37.6,
     longitude: -95.665,
-    zoom: 3
+    zoom: 3,
   });
 
   useEffect(() => {
     (async () => {
-      const point = await points();
-      // setPoint(point)
-      console.log(point);
-    })()
-  }, [])
+      const entries = await entriesList();
+      setEntries(entries);
+    })();
+  }, []);
 
-  const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1Ijoic2x1Z292b3k4MSIsImEiOiJja2s3Yjk3d20wYzhoMnhtaXo0N3MxZnRoIn0.iRRYqUDtPqDSubEVG9RSgw';
+  const showNewMarker = (e) => {
+    console.log(e);
+  }
+
+  // console.log(entries);
+  const REACT_APP_MAPBOX_TOKEN =
+    "pk.eyJ1Ijoic2x1Z292b3k4MSIsImEiOiJja2s3Yjk3d20wYzhoMnhtaXo0N3MxZnRoIn0.iRRYqUDtPqDSubEVG9RSgw";
 
   //  Rendering (point, setpoint and usestate)
   return (
@@ -31,26 +34,63 @@ export default function Home() {
       {...viewport}
       mapStyle="mapbox://styles/slugovoy81/ckk7ccpwo098t18qyk7ydw402"
       mapboxApiAccessToken={REACT_APP_MAPBOX_TOKEN}
-      onViewportChange={nextViewport => setViewport(nextViewport)}
+      onViewportChange={setViewport}
+      onDblClick={showNewMarker}
     >
-      {
-        point.map(entry => (
+      {entries.map((entry) => (
+        <>
           <Marker
+            key={entry._id}
+            latitude={entry.latitude}
+            longitude={entry.longitude}
+          >
+            <div
+              onClick={() =>
+                setPopup({
+                  [entry._id]: true,
+                })
+              }
+            >
+              <svg
+                className="marker"
+                style={{
+                  width: `${6 * viewport.zoom}px`,
+                  height: `${6 * viewport.zoom}px`,
+                  stroke: "#f8c102",
+                }}
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+          </Marker>
+          {showPopup[entry._id] ? (
+            <Popup
               latitude={entry.latitude}
               longitude={entry.longitude}
+              closeButton={true}
+              closeOnClick={false}
+              dynamicPosition={true}
+              onClose={() => setPopup({})}
+              anchor="top"
             >
-              <div style= {{color:"red"}}>
-                {entry.title}
+              <div className="popup">
+                <h3>{entry.title}</h3>
+                <p>{entry.comments}</p>
+                <small>
+                  Visited on: {new Date(entry.visitDate).toLocaleDateString()}
+                </small>
+                {entry.image && <img src={entry.image} alt={entry.title} />}
               </div>
-            </Marker>
-        ))
-      }
-    </ReactMapGL> 
-    
-
-
-
-    
+            </Popup>
+          ) : null}
+        </>
+      ))}
+    </ReactMapGL>
   );
-
 }
