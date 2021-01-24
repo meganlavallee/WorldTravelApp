@@ -12,6 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.error{
+  color: red;
+}
 .marker{
   transform: translate(-50%, -100%);
 }

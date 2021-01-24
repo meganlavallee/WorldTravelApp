@@ -15,11 +15,15 @@ export default function Home() {
     zoom: 3,
   });
 
+  async function getAllPlaces() {
+    const entries = await entriesList();
+    setEntries(entries);
+  }
+
   useEffect(() => {
-    (async () => {
-      const entries = await entriesList();
-      setEntries(entries);
-    })();
+
+    getAllPlaces();
+    
   }, []);
 
   const showNewMarker = (e) => {
@@ -133,7 +137,12 @@ export default function Home() {
             anchor="top"
           >
             <div className="popup">
-              <NewLocationForm />
+              <NewLocationForm
+              onClose={() => {
+                setNewLocation(null);
+                getAllPlaces();
+              }} 
+              location={newLocation}/>
             </div>
           </Popup>
         </>

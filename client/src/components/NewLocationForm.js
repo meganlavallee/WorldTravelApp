@@ -1,28 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { createNewLocation } from "../utils/api";
 
-function NewLocationForm() {
-    const { register, handleSubmit } = useForm();
+function NewLocationForm({ location, onClose }) {
+  const { register, handleSubmit } = useForm();
+  const [newEntryLoad, setNewEntryLoad] = useState(false);
+  const [error, setError] = useState("")
 
-    function onSubmit(data) {
-        console.log(data);
+  async function onSubmit(data) {
+    try {
+        setNewEntryLoad(true);
+        data.latitude = location.latitude;
+        data.longitude = location.longitude;
+      const newLocation = await createNewLocation(data);
+      console.log(newLocation);
+      onClose();
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
     }
+    setNewEntryLoad(false);
+  }
   return (
-    <form 
-    className="newLocationForm"
-    onSubmit={handleSubmit(onSubmit)} 
-    >
+    <form className="newLocationForm" onSubmit={handleSubmit(onSubmit)}>
+    {error ? <h4 className="error">{error}</h4> : null}
       <label htmlFor="title">Title</label>
-      <input name="title" required ref={register}/>
+      <input name="title" required ref={register} />
       <label htmlFor="comments">Comments</label>
       <textarea name="comments" rows={3} ref={register}></textarea>
       <label htmlFor="description">Description</label>
       <textarea name="description" rows={3} ref={register}></textarea>
-      <label htmlFor="image">Image</label>
-      <input name="image" ref={register}/>
+      <label htmlFor="image" placeholder="Place image link here">Image</label>
+      <input name="image" ref={register} />
       <label htmlFor="visitDate">Visit Date</label>
-      <input name="visitDate" type="date" required ref={register}/>
-      <button>Add Location</button>
+      <input name="visitDate" type="date" required ref={register} />
+      <button disabled={newEntryLoad}>{newEntryLoad ? "Created entry" : "Add Location"}</button>
     </form>
   );
 }
