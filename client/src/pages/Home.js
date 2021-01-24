@@ -48,9 +48,8 @@ export default function Home() {
       onDblClick={showNewMarker}
     >
       {entries.map((entry) => (
-        <>
+        <React.Fragment key={entry._id}>
           <Marker
-            key={entry._id}
             latitude={entry.latitude}
             longitude={entry.longitude}
           
@@ -92,15 +91,17 @@ export default function Home() {
             >
               <div className="popup">
                 <h3>{entry.title}</h3>
-                <p>{entry.comments}</p>
+                <p>Comments: {entry.comments}</p>
+                <p>Description: {entry.description}</p>
                 <small>
                   Visited on: {new Date(entry.visitDate).toLocaleDateString()}
                 </small>
+                <p>Rating: {entry.rating}</p>
                 {entry.image && <img src={entry.image} alt={entry.title} />}
               </div>
             </Popup>
           ) : null}
-        </>
+        </React.Fragment>
       ))}
       {newLocation ? (
         <>
