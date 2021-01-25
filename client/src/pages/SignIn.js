@@ -63,12 +63,13 @@ export default function SignIn() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      history.push("/home");
     } catch {
       setError("Failed to log in");
+      // console.log();
+      setLoading(false);
     }
 
-    setLoading(false);
   }
 
   return (
@@ -98,7 +99,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
-            ref={emailRef}
+            inputRef={emailRef}
           />
           <TextField
             variant="outlined"
@@ -110,7 +111,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
-            ref={passwordRef}
+            inputRef={passwordRef}
           />
           <Button
             type="submit"

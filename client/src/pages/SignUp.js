@@ -59,7 +59,7 @@ export default function SignUp() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(passwordRef.current.text)
+    console.log(passwordRef.current.value)
     console.log(passwordConfirmRef.current.value)
     console.log(emailRef.current.value)
 
