@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { useHistory } from "react-router-dom";
 import { Alert } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -49,26 +48,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const { login } = useAuth();
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const emailRef = useRef()
+  const { resetPassword } = useAuth()
+  const [error, setError] = useState("")
+  const [message, setMessage] = useState("")
+  const [loading, setLoading] = useState(false)
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      setError("");
-      setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      setMessage("")
+      setError("")
+      setLoading(true)
+      await resetPassword(emailRef.current.value)
+      setMessage("Check your inbox for further instructions")
     } catch {
-      setError("Failed to log in");
+      setError("Failed to reset password")
     }
 
-    setLoading(false);
+    setLoading(false)
   }
 
   return (
@@ -87,6 +86,7 @@ export default function SignIn() {
             {error}
           </Alert>
         )}
+        {message && <Alert variant="success">{message}</Alert>}
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
@@ -100,18 +100,6 @@ export default function SignIn() {
             autoFocus
             ref={emailRef}
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            ref={passwordRef}
-          />
           <Button
             type="submit"
             fullWidth
@@ -120,29 +108,17 @@ export default function SignIn() {
             className={classes.submit}
             disabled={loading}
           >
-            Sign In
+            Reset Password
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="/forgot-password" variant="body2">
-                Forgot password?
+              <Link href="/signin" variant="body2">
+                Sign In
               </Link>
             </Grid>
             <Grid item>
               <Link href="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-            <br></br>
-            <Grid item>
-              <Link href="/home" variant="body2">
-                {"Go To Home Page"}
-              </Link>
-            </Grid>
-            <br></br>
-            <Grid item>
-              <Link href="/savedlist" variant="body2">
-                {"Go To Saved List Page"}
               </Link>
             </Grid>
           </Grid>
