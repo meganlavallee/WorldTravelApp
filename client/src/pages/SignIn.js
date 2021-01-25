@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
-import { Alert } from "@material-ui/core";
+import { Alert } from '@material-ui/lab'
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -131,18 +131,6 @@ export default function SignIn() {
             <Grid item>
               <Link href="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-            <br></br>
-            <Grid item>
-              <Link href="/home" variant="body2">
-                {"Go To Home Page"}
-              </Link>
-            </Grid>
-            <br></br>
-            <Grid item>
-              <Link href="/savedlist" variant="body2">
-                {"Go To Saved List Page"}
               </Link>
             </Grid>
           </Grid>

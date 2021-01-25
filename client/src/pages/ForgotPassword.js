@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { Alert } from "@material-ui/core";
+import { useAuth } from "../context/AuthContext";
+import { Alert } from '@material-ui/lab'
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";

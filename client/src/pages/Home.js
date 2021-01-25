@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import entriesList from "../utils/api";
-// import NewLocationForm from "../components/NewLocationForm"
-import OldMarkers from "../components/OldMarkers"
-import NewMarkers from "../components/NewMarkers"
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import OldMarkers from "../components/OldMarkers";
+import NewMarkers from "../components/NewMarkers";
+import { Button } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 
 export default function Home() {
   const [showPopup, setPopup] = useState({});
@@ -16,6 +19,9 @@ export default function Home() {
     longitude: -95.665,
     zoom: 3,
   });
+  const [error, setError] = useState("");
+  const { logout } = useAuth();
+  const history = useHistory();
 
   async function getAllPlaces() {
     const entries = await entriesList();
@@ -23,9 +29,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-
     getAllPlaces();
-    
   }, []);
 
   const showNewMarker = (e) => {
@@ -35,6 +39,17 @@ export default function Home() {
       longitude,
     });
   };
+
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      history.push("/signin");
+    } catch {
+      setError("Failed to log out");
+    }
+  }
 
   // console.log(entries);
   const REACT_APP_MAPBOX_TOKEN =
@@ -49,11 +64,29 @@ export default function Home() {
       onViewportChange={setViewport}
       onDblClick={showNewMarker}
     >
+      {error && (
+        <Alert variant="filled" severity="error">
+          {error}
+        </Alert>
+      )}
+      <Button onClick={handleLogout}>Log Out</Button>
       {entries.map((entry) => (
-        <OldMarkers  key={entry._id} entry={entry} setPopup={setPopup} showPopup={showPopup} viewport={viewport}/>
+        <OldMarkers
+          key={entry._id}
+          entry={entry}
+          setPopup={setPopup}
+          showPopup={showPopup}
+          viewport={viewport}
+        />
       ))}
       {newLocation ? (
-        <NewMarkers newLocation={newLocation} viewport={viewport} setNewLocation={setNewLocation} getAllPlaces={getAllPlaces} showNewMarker={showNewMarker}/>
+        <NewMarkers
+          newLocation={newLocation}
+          viewport={viewport}
+          setNewLocation={setNewLocation}
+          getAllPlaces={getAllPlaces}
+          showNewMarker={showNewMarker}
+        />
       ) : null}
     </ReactMapGL>
   );

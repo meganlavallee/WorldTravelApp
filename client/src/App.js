@@ -2,19 +2,24 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import SavedList from "./pages/SavedList";
 import Home from "./pages/Home";
-
+import PrivateRoute from "./pages/PrivateRoute";
+import ForgotPassword from "./pages/ForgotPassword";
+import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
     <Router>
-    <Switch>
-    <Route exact path="/signin" component={SignIn} />
-    <Route exact path="/signup" component={SignUp}/>
-    <Route exact path="/home" component={Home}/>
-    <Route exact path="/savedlist" component={SavedList}/> 
-    </Switch>
+      <AuthProvider>
+        <Switch>
+          <PrivateRoute exact path="/home" component={Home} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/savedlist" component={SavedList} />
+        </Switch>
+      </AuthProvider>
     </Router>
   );
 }
