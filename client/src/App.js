@@ -14,6 +14,7 @@ function App() {
       <AuthProvider>
         <Switch>
           <PrivateRoute exact path="/home" component={Home} />
+          <Route exact path="/" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/signin" component={SignIn} />
           <Route path="/forgot-password" component={ForgotPassword} />
