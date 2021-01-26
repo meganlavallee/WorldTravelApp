@@ -70,13 +70,30 @@ export default function Home() {
           {error}
         </Alert>
       )}
-      <Button onClick={handleLogout} style={{ backgroundColor: "lightblue", color: "red", marginLeft: "4px" }}>Log Out</Button>
-      <Link to={{
-        pathname: "/savedlist",
-        state: entries
-      }} >
-        <Button style={{ backgroundColor: "lightblue", color: "red" }}>Saved cities</Button>
-      </Link>
+      <div className="buttonDiv">
+        <Button
+          onClick={handleLogout}
+          className="logoutBtn"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.36)",
+            color: "red",
+            fontWeight: "600",
+          }}
+        >
+          Log Out
+        </Button>
+        <Link to="/savedlist" className="savedLink">
+          <Button
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.36)",
+              color: "red",
+              fontWeight: "600",
+            }}
+          >
+            Saved cities
+          </Button>
+        </Link>
+      </div>
       {entries.map((entry) => (
         <OldMarkers
           key={entry._id}
