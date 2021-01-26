@@ -2,13 +2,18 @@
   "name": "WorldTravelApp",
   "version": "1.0.0",
   "description": "Our project proposal [Here](https://docs.google.com/document/d/1RIcCoV3pUM4s_eIP8U6rwWWyTKbiM5N5iTAX1Xs6QL0/edit?usp=sharing)",
-  "main": "src/index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "npm run seed",
-    "start": "node server/src/index.js",
-    "dev": "nodemon server/src/index.js",
-    "seed": "node server/src/seeders/seeds.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "dev": "nodemon server.js",
+    "seed": "node seeders/seeds.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,7 @@
   },
   "homepage": "https://github.com/meganlavallee/WorldTravelApp#readme",
   "dependencies": {
+    "concurrently": "^5.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
