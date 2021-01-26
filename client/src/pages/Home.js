@@ -53,15 +53,15 @@ export default function Home() {
   }
 
   // console.log(entries);
-  const REACT_APP_MAPBOX_TOKEN =
-    "pk.eyJ1Ijoic2x1Z292b3k4MSIsImEiOiJja2s3Yjk3d20wYzhoMnhtaXo0N3MxZnRoIn0.iRRYqUDtPqDSubEVG9RSgw";
+  // dotenv
+  require('dotenv').config();
 
   //  Rendering (point, setpoint and usestate)
   return (
     <ReactMapGL
       {...viewport}
       mapStyle="mapbox://styles/slugovoy81/ckk7ccpwo098t18qyk7ydw402"
-      mapboxApiAccessToken={REACT_APP_MAPBOX_TOKEN}
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={setViewport}
       onDblClick={showNewMarker}
     >
