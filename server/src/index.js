@@ -17,7 +17,7 @@ const app = express();
 
 // mongodb connection
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+  process.env.MONGODB_URI || 'mongodb://localhost/travelapp',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -25,7 +25,6 @@ mongoose.connect(
     useFindAndModify: false
   }
 );
-
 
 app.use(morgan('common'));
 app.use(helmet());
