@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Alert } from '@material-ui/lab'
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+import LinkMaterial from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -18,9 +18,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <LinkMaterial color="inherit" href="https://material-ui.com/">
         World Travel App
-      </Link>{" "}
+      </LinkMaterial>{" "}
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -63,12 +63,13 @@ export default function SignIn() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      history.push("/home");
     } catch {
       setError("Failed to log in");
+      // console.log();
+      setLoading(false);
     }
 
-    setLoading(false);
   }
 
   return (
@@ -98,7 +99,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
-            ref={emailRef}
+            inputRef={emailRef}
           />
           <TextField
             variant="outlined"
@@ -110,7 +111,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
-            ref={passwordRef}
+            inputRef={passwordRef}
           />
           <Button
             type="submit"
@@ -124,12 +125,12 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="/forgot-password" variant="body2">
+              <Link to="/forgot-password" variant="body2">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/signup" variant="body2">
+              <Link to="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

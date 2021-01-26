@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import entriesList from "../utils/api";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import OldMarkers from "../components/OldMarkers";
 import NewMarkers from "../components/NewMarkers";
 import { Button } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
+// import LinkMaterial from "@material-ui/core/Link";
 
 export default function Home() {
   const [showPopup, setPopup] = useState({});
@@ -69,7 +70,30 @@ export default function Home() {
           {error}
         </Alert>
       )}
-      <Button onClick={handleLogout}>Log Out</Button>
+      <div className="buttonDiv">
+        <Button
+          onClick={handleLogout}
+          className="logoutBtn"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.36)",
+            color: "red",
+            fontWeight: "600",
+          }}
+        >
+          Log Out
+        </Button>
+        <Link to="/savedlist" className="savedLink">
+          <Button
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.36)",
+              color: "red",
+              fontWeight: "600",
+            }}
+          >
+            Saved cities
+          </Button>
+        </Link>
+      </div>
       {entries.map((entry) => (
         <OldMarkers
           key={entry._id}
