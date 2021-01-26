@@ -16,11 +16,16 @@ const logs = require('./api/logs');
 const app = express();
 
 // mongodb connection
-var uri = "mongodb://localhost:27017/travelapp";
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
+
 
 app.use(morgan('common'));
 app.use(helmet());
