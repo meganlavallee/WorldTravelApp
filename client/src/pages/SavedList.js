@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ButtonAppBar from "../components/ButtonAppBar";
 import VerticalTabs from "../components/VerticalTabs";
 import entriesList from "../utils/api";
-import _ from "lodash";
+
 
 function SavedList() {
   const [entries, setEntries] = useState([]);
