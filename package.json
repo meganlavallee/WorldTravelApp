@@ -11,7 +11,7 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "prestart": "npm run build",
+    "poststart": "npm run build",
     "dev": "nodemon server.js",
     "seed": "node seeders/seeds.js"
   },
