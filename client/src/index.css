@@ -56,3 +56,7 @@ code {
   height: 80vh;
   overflow: auto;
 }
+
+.cardText{
+  font-weight: 600;
+}

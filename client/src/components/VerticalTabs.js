@@ -16,25 +16,25 @@ export default function VerticalTabs({ entries }) {
             >
               <Card
                 key={entry._id}
-                style={{ width: "17rem" }}
+                style={{ width: "17rem", backgroundColor: "rgba(255, 255, 255, 0.36)" }}
                 className="border-end-success"
               >
-                <Card.Title className="mb-4 ml-2">Title: {entry.title}</Card.Title>
+                <Card.Title className="mb-3 text-center" style={{fontWeight: "600"}}>Title: {entry.title}</Card.Title>
                 <Card.Img
-                  style={{ width: "10rem" }}
+                  style={{ width: "15rem" }}
                   variant="top"
                   src={entry.image}
-                  className="ml-5 mb-2"
+                  className="ml-3 mb-2"
                 />
               </Card>
               <Card.Body key={entry._id + 1} style={{ width: "18rem" }}>
-                <Card.Text className="mt-5">
+                <Card.Text className="cardText mt-5">
                   Description: {entry.description}
                 </Card.Text>
-                <Card.Text className="mt-5">
+                <Card.Text className="cardText mt-5">
                   Comments: {entry.comments}
                 </Card.Text>
-                <Card.Text className="mt-5">
+                <Card.Text className="cardText mt-5">
                   Rating: {entry.rating}
                 </Card.Text>
               </Card.Body>
