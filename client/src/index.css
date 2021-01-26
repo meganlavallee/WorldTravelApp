@@ -44,3 +44,15 @@ code {
   display: block;
   width: 100%;
 }
+.buttonDiv{
+  display: inline;
+  margin-left: 8px;
+}
+.savedLink{
+  margin-left: 10px;
+}
+.mainScroll{
+  width: 95vw;
+  height: 80vh;
+  overflow: auto;
+}
