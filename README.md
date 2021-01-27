@@ -12,13 +12,12 @@ The project is to produce a professional looking readme file for projects.
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
+* [Technologies](#technologies)
 * [Contributing](#contributing)
 * [Demo](#demo)
 * [License](#license)
 * [Questions](#questions)
         
-
-
 ## Installation
 ```
 You can install this project through cloning it down in github.
@@ -27,15 +26,16 @@ You can install this project through cloning it down in github.
 ## Usage
 For creating professional looking readmes.
 
-        
+## Technologies
+`Concurrently`, `Cors`, `Express`, `Helmet`, `if-env`, `mongoose`, `morgan`, `nodemon`, `material-ui`, `react`, `react-bootstrap`, `react-router-dom`, `react-map-gl`, `firebase`, `web-vitals`
+
 ## Contributing
-Megan Lavallee 
-Arjun Singh 
+Megan Lavallee, 
+Arjun Singh,
 Sergey Lugovoy 
-
-        
+     
 ## Demo
-
+![Gif](./assets/demo.gif)
         
 ## License
 MIT
