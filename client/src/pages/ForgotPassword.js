@@ -1,3 +1,4 @@
+// Variables and Packages
 import React, { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Alert } from '@material-ui/lab';
@@ -6,7 +7,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -14,9 +14,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+// Copyright Component
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textPrimary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         World Travel App
@@ -27,6 +28,7 @@ function Copyright() {
   );
 }
 
+// Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -47,14 +49,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Main Function Component
 export default function SignIn() {
+  // States
   const classes = useStyles();
   const emailRef = useRef()
   const { resetPassword } = useAuth()
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
-
+// Handle Submit Function
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -70,7 +74,7 @@ export default function SignIn() {
 
     setLoading(false)
   }
-
+// Rendering
   return (
     <Container component="main" maxWidth="xs">
       <h1 className="apptitle">World Travel App</h1>
@@ -80,7 +84,7 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Forgot Password
         </Typography>
         {error && (
           <Alert variant="filled" severity="error">
@@ -100,6 +104,7 @@ export default function SignIn() {
             autoComplete="email"
             autoFocus
             inputRef={emailRef}
+            style={{ backgroundColor: "white" }}
           />
           <Button
             type="submit"
@@ -114,12 +119,30 @@ export default function SignIn() {
           <Grid container>
             <Grid item xs>
               <Link to="/signin" variant="body2">
-                Sign In
+              <Button
+                  type="submit"
+                  style={{ width: "45%", fontSize: "10px", backgroundColor:"#8366ea" }}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Sign In
+          </Button>
               </Link>
-            </Grid>
-            <Grid item>
+            
+            
               <Link to="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Button
+                  type="submit"
+                  style={{ width: "45%", fontSize: "10px", marginLeft:"39px", backgroundColor:"#8366ea"}}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Sign Up
+          </Button>
               </Link>
             </Grid>
           </Grid>

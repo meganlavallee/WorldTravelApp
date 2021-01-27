@@ -1,3 +1,4 @@
+// Packages and Variables
 import React, { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
@@ -14,9 +15,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+// Copyright component
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textPrimary" align="center">
       {"Copyright © "}
       <LinkMaterial color="inherit" href="https://material-ui.com/">
         World Travel App
@@ -26,7 +28,7 @@ function Copyright() {
     </Typography>
   );
 }
-
+// Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -47,7 +49,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Main Function Component
 export default function SignIn() {
+  // States
   const classes = useStyles();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -55,7 +59,8 @@ export default function SignIn() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-
+  
+// handle submit function
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -66,12 +71,11 @@ export default function SignIn() {
       history.push("/home");
     } catch {
       setError("Failed to log in");
-      // console.log();
       setLoading(false);
     }
 
   }
-
+// Rendering
   return (
     <Container component="main" maxWidth="xs">
       <h1 className="apptitle">World Travel App</h1>
@@ -100,6 +104,7 @@ export default function SignIn() {
             autoComplete="email"
             autoFocus
             inputRef={emailRef}
+            style={{ backgroundColor: "white" }}
           />
           <TextField
             variant="outlined"
@@ -112,6 +117,7 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
             inputRef={passwordRef}
+            style={{ backgroundColor: "white" }}
           />
           <Button
             type="submit"
@@ -126,12 +132,28 @@ export default function SignIn() {
           <Grid container>
             <Grid item xs>
               <Link to="/forgot-password" variant="body2">
-                Forgot password?
+                <Button
+                  type="submit"
+                  style={{ width: "45%", fontSize: "10px", backgroundColor:"#8366ea" }}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Forgot Password
+          </Button>
               </Link>
-            </Grid>
-            <Grid item>
               <Link to="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+                <Button
+                  type="submit"
+                  style={{ width: "45%", fontSize: "10px", marginLeft:"39px", backgroundColor:"#8366ea"}}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Sign Up
+          </Button>
               </Link>
             </Grid>
           </Grid>

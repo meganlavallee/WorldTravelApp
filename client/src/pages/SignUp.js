@@ -1,3 +1,4 @@
+// Packages and Variables
 import React, { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
@@ -14,9 +15,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+// copyright component
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textPrimary" align="center">
       {"Copyright © "}
       <LinkMaterial color="inherit" href="https://material-ui.com/">
         World Travel App
@@ -27,6 +29,7 @@ function Copyright() {
   );
 }
 
+// Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -47,7 +50,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Main function component
 export default function SignUp() {
+  // States
   const classes = useStyles();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -57,6 +62,7 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  // Handle Submit
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(passwordRef.current.value)
@@ -79,6 +85,7 @@ export default function SignUp() {
     setLoading(false);
   }
 
+  // Rendering
   return (
     <Container component="main" maxWidth="xs">
       <h1 className="apptitle">World Travel App</h1>
@@ -107,6 +114,7 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
                 inputRef={emailRef}
+                style={{ backgroundColor: "white" }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -119,6 +127,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 inputRef={passwordRef}
+                style={{ backgroundColor: "white" }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -131,6 +140,7 @@ export default function SignUp() {
                 type="password"
                 id="password-confirm"
                 inputRef={passwordConfirmRef}
+                style={{ backgroundColor: "white" }}
               />
             </Grid>
           </Grid>
@@ -147,7 +157,16 @@ export default function SignUp() {
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/signin" variant="body2">
-                Already have an account? Sign in
+                <Button
+                  type="submit"
+                  style={{ width: "100%", fontSize: "10px", backgroundColor:"#8366ea" }}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Already have an account? Sign in
+          </Button>
               </Link>
             </Grid>
           </Grid>

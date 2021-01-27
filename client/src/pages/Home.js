@@ -1,3 +1,4 @@
+// Packages and Variables
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import entriesList from "../utils/api";
@@ -7,9 +8,10 @@ import OldMarkers from "../components/OldMarkers";
 import NewMarkers from "../components/NewMarkers";
 import { Button } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-// import LinkMaterial from "@material-ui/core/Link";
 
+// Main Function Component
 export default function Home() {
+  // States
   const [showPopup, setPopup] = useState({});
   const [newLocation, setNewLocation] = useState(null);
   const [entries, setEntries] = useState([]);
@@ -23,7 +25,7 @@ export default function Home() {
   const [error, setError] = useState("");
   const { logout } = useAuth();
   const history = useHistory();
-
+// get all entries
   async function getAllPlaces() {
     const entries = await entriesList();
     setEntries(entries);
@@ -32,7 +34,7 @@ export default function Home() {
   useEffect(() => {
     getAllPlaces();
   }, []);
-
+// Function to show all markers
   const showNewMarker = (e) => {
     const [longitude, latitude] = e.lngLat;
     setNewLocation({
@@ -40,7 +42,7 @@ export default function Home() {
       longitude,
     });
   };
-
+// logout
   async function handleLogout() {
     setError("");
 
@@ -52,16 +54,14 @@ export default function Home() {
     }
   }
 
-  // console.log(entries);
-  const REACT_APP_MAPBOX_TOKEN =
-    "pk.eyJ1Ijoic2x1Z292b3k4MSIsImEiOiJja2s3Yjk3d20wYzhoMnhtaXo0N3MxZnRoIn0.iRRYqUDtPqDSubEVG9RSgw";
+  require('dotenv').config();
 
   //  Rendering (point, setpoint and usestate)
   return (
     <ReactMapGL
       {...viewport}
       mapStyle="mapbox://styles/slugovoy81/ckk7ccpwo098t18qyk7ydw402"
-      mapboxApiAccessToken={REACT_APP_MAPBOX_TOKEN}
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={setViewport}
       onDblClick={showNewMarker}
     >

@@ -1,3 +1,4 @@
+/* Body Styling */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -8,26 +9,39 @@ body {
   overflow: hidden;
 }
 
+/* Code Styling */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Error Styles */
 .error{
   color: red;
 }
+
+/* Marker Styles */
 .marker{
   transform: translate(-50%, -100%);
 }
+
+/* Red Marker Styles */
 .marker.red path {
   fill: red;
 }
+
+/* Blue Marker Styles */
 .marker.blue path {
   fill: blue;
 }
+
+/* Pop Up Styles */
 .popup{
   width: 40vw;
   padding: 1rem;
 }
+
+/* Pop Up Image */
 .popup img {
   height: 200px;
   width: auto;
@@ -35,6 +49,8 @@ code {
   margin: 0 auto;
   display: block;
 }
+
+/* New Location Form Styles */
 .newLocationForm label,
 .newLocationForm input,
 .newLocationForm textarea,
@@ -44,20 +60,34 @@ code {
   display: block;
   width: 100%;
 }
+
+/* Button Div Style */
 .buttonDiv{
   display: inline;
   margin-left: 8px;
 }
+
+/* Saved Link Styles */
 .savedLink{
   margin-left: 10px;
 }
+
+/* Main Scroll Style */
 .mainScroll{
   width: 95vw;
   height: 80vh;
   overflow: auto;
 }
 
+<<<<<<< HEAD
 .cardText{
   font-weight: 600;
   font-style: italic;
 }
+=======
+/* Card Text Style */
+.cardText{
+  font-weight: 600;
+  font-style: italic;
+}
+>>>>>>> d0e140ffe84f8b1b171d98a0dba214adff8888d2

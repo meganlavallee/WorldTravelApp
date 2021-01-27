@@ -1,10 +1,11 @@
-// const API_URL = "http://localhost:3000";
-
+// Entries List Function Component
 export default async function entriesList() {
     const response = await fetch(`/api/logs`);
     return response.json();
 }
+// Create New Location Function Component
 export async function createNewLocation(data) {
+    // States
     const response = await fetch(`/api/logs`,
     {
         method: 'POST',
@@ -14,5 +15,6 @@ export async function createNewLocation(data) {
         body: JSON.stringify(data)
     }
     );
+    // Render
     return response.json();
 }
