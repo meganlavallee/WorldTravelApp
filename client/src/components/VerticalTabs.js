@@ -1,10 +1,10 @@
+// Packages and Variables
 import React from "react";
-
 import { Card } from "react-bootstrap";
 
-
+// Main Function
 export default function VerticalTabs({ entries }) {
-  console.log(entries);
+  // Rendering
   return (
     <div className="mainScroll col-md-12 mt-5">
       {entries.length ? (

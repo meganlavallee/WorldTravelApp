@@ -1,3 +1,4 @@
+// Packages and Variables
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import SavedList from "./pages/SavedList";
@@ -8,7 +9,9 @@ import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
+// App Function
 function App() {
+  // Render
   return (
     <div className="mainAppDiv">
       <Router>

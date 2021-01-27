@@ -1,8 +1,11 @@
+// Variables and Packages
 import React from 'react'
 import { Marker, Popup } from "react-map-gl";
 import NewLocationForm from "./NewLocationForm"
 
+// Main Function
 function NewMarkers({newLocation, viewport, setNewLocation, getAllPlaces}) {
+  // Render on Page
     return (
         <>
            <Marker

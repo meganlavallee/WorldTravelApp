@@ -1,3 +1,4 @@
+// Packages and Variables
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import entriesList from "../utils/api";
@@ -7,9 +8,10 @@ import OldMarkers from "../components/OldMarkers";
 import NewMarkers from "../components/NewMarkers";
 import { Button } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-// import LinkMaterial from "@material-ui/core/Link";
 
+// Main Function Component
 export default function Home() {
+  // States
   const [showPopup, setPopup] = useState({});
   const [newLocation, setNewLocation] = useState(null);
   const [entries, setEntries] = useState([]);
@@ -23,7 +25,7 @@ export default function Home() {
   const [error, setError] = useState("");
   const { logout } = useAuth();
   const history = useHistory();
-
+// get all entries
   async function getAllPlaces() {
     const entries = await entriesList();
     setEntries(entries);
@@ -32,7 +34,7 @@ export default function Home() {
   useEffect(() => {
     getAllPlaces();
   }, []);
-
+// Function to show all markers
   const showNewMarker = (e) => {
     const [longitude, latitude] = e.lngLat;
     setNewLocation({
@@ -40,7 +42,7 @@ export default function Home() {
       longitude,
     });
   };
-
+// logout
   async function handleLogout() {
     setError("");
 
@@ -52,8 +54,6 @@ export default function Home() {
     }
   }
 
-  // console.log(entries);
-  // dotenv
   require('dotenv').config();
 
   //  Rendering (point, setpoint and usestate)
