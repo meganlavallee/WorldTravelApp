@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="static">
         <div className="appbar">
           <a href="/home">
-            <Typography variant="h4" className={classes.title}>
+            <Typography variant="h4">
               Home
             </Typography>
           </a>

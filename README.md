@@ -35,15 +35,12 @@ Sergey Lugovoy
 
         
 ## Test
-![image](https://user-images.githubusercontent.com/73404164/100271823-5ca4f580-2f17-11eb-912b-77e452337ec4.png)
-[![Watch the video](https://www.youtube.com/watch?v=T28L0ldPNsE)](https://www.youtube.com/watch?v=T28L0ldPNsE)
+
         
 ## License
 MIT
 
 ## Questions
-GitHub profile: [Megan](https://github.com/meganlavallee)
-GitHub profile: [Arjun](https://github.com/arjunsingh1027)
-GitHub profile: [Sergey](https://github.com/slugovoy)
+GitHub profiles: [Megan](https://github.com/meganlavallee), [Arjun](https://github.com/arjunsingh1027), [Sergey](https://github.com/slugovoy)
 
 Email: megan.lavallee@yahoo.com
