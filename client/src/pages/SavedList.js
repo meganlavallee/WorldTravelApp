@@ -1,14 +1,20 @@
+// Packages and Variables
 import React, { useState, useEffect } from "react";
 import ButtonAppBar from "../components/ButtonAppBar";
 import VerticalTabs from "../components/VerticalTabs";
 import entriesList from "../utils/api";
+
+// Saved List Function
 function SavedList() {
   const [entriesArray, setEntries] = useState({
     entries: [],
     searchedEntries: [],
     search: "",
   });
+  
+  // Get All Places Component Fuction
   async function getAllPlaces() {
+    // States
     let entriesAll = await entriesList();
     let entriesData = entriesAll.sort((a, b) => {
       return a.title.localeCompare(b.title);
@@ -19,10 +25,13 @@ function SavedList() {
       entries: entriesData,
     });
   }
+  // Effect
   useEffect(() => {
     getAllPlaces();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Handle Search Function
   const handleSearch = (event) => {
     event.preventDefault();
     const entries = entriesArray.entries;
@@ -39,6 +48,7 @@ function SavedList() {
       searchedEntries: newEntriesArray,
     });
   };
+  // Render
   return (
     <div>
       <h1 className="apptitle">World Travel App</h1>
@@ -59,4 +69,5 @@ function SavedList() {
     </div>
   );
 }
+
 export default SavedList;
