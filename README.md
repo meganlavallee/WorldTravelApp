@@ -13,7 +13,7 @@ The project is to produce a professional looking readme file for projects.
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributing](#contributing)
-* [Test](#tests)
+* [Demo](#demo)
 * [License](#license)
 * [Questions](#questions)
         
@@ -25,7 +25,7 @@ You can install this project through cloning it down in github.
 ```
 
 ## Usage
-For creaating professional looking readmes.
+For creating professional looking readmes.
 
         
 ## Contributing
@@ -34,13 +34,16 @@ Arjun Singh
 Sergey Lugovoy 
 
         
-## Test
+## Demo
 
         
 ## License
 MIT
 
 ## Questions
-GitHub profiles: [Megan](https://github.com/meganlavallee), [Arjun](https://github.com/arjunsingh1027), [Sergey](https://github.com/slugovoy)
+GitHub profiles: 
+[Megan](https://github.com/meganlavallee), 
+[Arjun](https://github.com/arjunsingh1027), 
+[Sergey](https://github.com/slugovoy)
 
 Email: megan.lavallee@yahoo.com
