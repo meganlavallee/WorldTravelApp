@@ -2,13 +2,7 @@
 let mongoose = require("mongoose");
 let LogEntry = require("../models/LogEntry");
 
-// Connection for Heroku and MongoDB Atlas
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/travelapp", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false,
-// });
+// Seed Function
 async function seeds() { 
 let seed = [
   {
@@ -42,6 +36,7 @@ let seed = [
   }
 ]
 
+// Delete Log Entry Function
  await LogEntry.deleteMany({})
   .then(() => LogEntry.collection.insertMany(seed))
   .then(data => {

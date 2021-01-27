@@ -1,12 +1,16 @@
+// Variables and Packages
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { createNewLocation } from "../utils/api";
 
+// Main Function
 function NewLocationForm({ location, onClose }) {
+  // States
   const { register, handleSubmit } = useForm();
   const [newEntryLoad, setNewEntryLoad] = useState(false);
   const [error, setError] = useState("")
 
+  // Submit Function
   async function onSubmit(data) {
     try {
         setNewEntryLoad(true);
@@ -16,11 +20,12 @@ function NewLocationForm({ location, onClose }) {
       console.log(newLocation);
       onClose();
     } catch (error) {
-      console.log(error);
       setError(error.message);
       setNewEntryLoad(false);
     }
   }
+
+  // Render on Page
   return (
     <form className="newLocationForm" onSubmit={handleSubmit(onSubmit)}>
     {error ? <h4 className="error">{error}</h4> : null}

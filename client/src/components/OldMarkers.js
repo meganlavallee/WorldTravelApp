@@ -1,8 +1,10 @@
+// Packages and Variables
 import React from "react";
 import { Marker, Popup } from "react-map-gl";
 
+// Main Function
 function OldMarkers({ entry, setPopup, showPopup, viewport }) {
-   
+  //  Rendering
   return (
 
       <React.Fragment key={entry._id}>

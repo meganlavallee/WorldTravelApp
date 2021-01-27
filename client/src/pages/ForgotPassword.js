@@ -1,3 +1,4 @@
+// Variables and Packages
 import React, { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Alert } from '@material-ui/lab';
@@ -6,7 +7,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+// Copyright Component
 function Copyright() {
   return (
     <Typography variant="body2" color="textPrimary" align="center">
@@ -27,6 +28,7 @@ function Copyright() {
   );
 }
 
+// Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -47,14 +49,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Main Function Component
 export default function SignIn() {
+  // States
   const classes = useStyles();
   const emailRef = useRef()
   const { resetPassword } = useAuth()
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
-
+// Handle Submit Function
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -70,7 +74,7 @@ export default function SignIn() {
 
     setLoading(false)
   }
-
+// Rendering
   return (
     <Container component="main" maxWidth="xs">
       <h1 className="apptitle">World Travel App</h1>

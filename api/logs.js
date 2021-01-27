@@ -1,3 +1,4 @@
+// Packages and Variables
 const { Router } = require("express");
 const router = Router();
 const LogEntry = require("../models/LogEntry");
@@ -23,4 +24,5 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// Export
 module.exports = router;

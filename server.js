@@ -33,16 +33,10 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Production Build
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
-
-// app.get('/', (req, res) => {
-//   res.json({
-//     message: 'Hello World!',
-//   });
-// });
 
 app.use('/api/logs', logs);
 

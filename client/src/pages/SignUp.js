@@ -1,3 +1,4 @@
+// Packages and Variables
 import React, { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
@@ -14,6 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+// copyright component
 function Copyright() {
   return (
     <Typography variant="body2" color="textPrimary" align="center">
@@ -27,6 +29,7 @@ function Copyright() {
   );
 }
 
+// Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -47,7 +50,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Main function component
 export default function SignUp() {
+  // States
   const classes = useStyles();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -57,6 +62,7 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  // Handle Submit
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(passwordRef.current.value)
@@ -79,6 +85,7 @@ export default function SignUp() {
     setLoading(false);
   }
 
+  // Rendering
   return (
     <Container component="main" maxWidth="xs">
       <h1 className="apptitle">World Travel App</h1>
