@@ -10,18 +10,20 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <Switch>
-          <PrivateRoute exact path="/home" component={Home} />
-          <Route exact path="/" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path="/savedlist" component={SavedList} />
-        </Switch>
-      </AuthProvider>
-    </Router>
+    <div className="mainAppDiv">
+      <Router>
+        <AuthProvider>
+          <Switch>
+            <PrivateRoute exact path="/home" component={Home} />
+            <Route exact path="/" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/signin" component={SignIn} />
+            <Route path="/forgot-password" component={ForgotPassword} />
+            <Route path="/savedlist" component={SavedList} />
+          </Switch>
+        </AuthProvider>
+      </Router>
+    </div>
   );
 }
 

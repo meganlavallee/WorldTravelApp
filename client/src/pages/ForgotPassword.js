@@ -16,7 +16,7 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textPrimary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         World Travel App
@@ -80,7 +80,7 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Forgot Password
         </Typography>
         {error && (
           <Alert variant="filled" severity="error">
@@ -100,6 +100,7 @@ export default function SignIn() {
             autoComplete="email"
             autoFocus
             inputRef={emailRef}
+            style={{ backgroundColor: "white" }}
           />
           <Button
             type="submit"
@@ -114,12 +115,30 @@ export default function SignIn() {
           <Grid container>
             <Grid item xs>
               <Link to="/signin" variant="body2">
-                Sign In
+              <Button
+                  type="submit"
+                  style={{ width: "45%", fontSize: "10px", backgroundColor:"#8366ea" }}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Sign In
+          </Button>
               </Link>
-            </Grid>
-            <Grid item>
+            
+            
               <Link to="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Button
+                  type="submit"
+                  style={{ width: "45%", fontSize: "10px", marginLeft:"39px", backgroundColor:"#8366ea"}}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Sign Up
+          </Button>
               </Link>
             </Grid>
           </Grid>

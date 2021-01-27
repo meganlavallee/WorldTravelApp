@@ -16,7 +16,7 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textPrimary" align="center">
       {"Copyright © "}
       <LinkMaterial color="inherit" href="https://material-ui.com/">
         World Travel App
@@ -100,6 +100,7 @@ export default function SignIn() {
             autoComplete="email"
             autoFocus
             inputRef={emailRef}
+            style={{ backgroundColor: "white" }}
           />
           <TextField
             variant="outlined"
@@ -112,6 +113,7 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
             inputRef={passwordRef}
+            style={{ backgroundColor: "white" }}
           />
           <Button
             type="submit"
@@ -126,12 +128,28 @@ export default function SignIn() {
           <Grid container>
             <Grid item xs>
               <Link to="/forgot-password" variant="body2">
-                Forgot password?
+                <Button
+                  type="submit"
+                  style={{ width: "45%", fontSize: "10px", backgroundColor:"#8366ea" }}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Forgot Password
+          </Button>
               </Link>
-            </Grid>
-            <Grid item>
               <Link to="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+                <Button
+                  type="submit"
+                  style={{ width: "45%", fontSize: "10px", marginLeft:"39px", backgroundColor:"#8366ea"}}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Sign Up
+          </Button>
               </Link>
             </Grid>
           </Grid>

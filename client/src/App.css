@@ -1,8 +1,11 @@
-html, #root {
+.mainAppDiv{
+    background-image: url("./img1.jpg");
     background-color: rgb(127, 140, 255);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
-
-
 
 .apptitle {
     text-align: center;
