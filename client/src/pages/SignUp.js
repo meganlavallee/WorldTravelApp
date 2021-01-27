@@ -16,7 +16,7 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textPrimary" align="center">
       {"Copyright © "}
       <LinkMaterial color="inherit" href="https://material-ui.com/">
         World Travel App
@@ -107,6 +107,7 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
                 inputRef={emailRef}
+                style={{ backgroundColor: "white" }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -119,6 +120,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 inputRef={passwordRef}
+                style={{ backgroundColor: "white" }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -131,6 +133,7 @@ export default function SignUp() {
                 type="password"
                 id="password-confirm"
                 inputRef={passwordConfirmRef}
+                style={{ backgroundColor: "white" }}
               />
             </Grid>
           </Grid>
@@ -147,7 +150,16 @@ export default function SignUp() {
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/signin" variant="body2">
-                Already have an account? Sign in
+                <Button
+                  type="submit"
+                  style={{ width: "100%", fontSize: "10px", backgroundColor:"#8366ea" }}
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  disabled={loading}
+                >
+                  Already have an account? Sign in
+          </Button>
               </Link>
             </Grid>
           </Grid>
